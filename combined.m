@@ -122,7 +122,7 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
     quiver3(0,0,0,r13,r23,r33,'b');
     hold off
     xlabel('x-axis'); ylabel('y-axis'); zlabel('z-axis');
-    axis( [-1,1,-1,1,-1,1] );
+    % axis( [-1,1,-1,1,-1,1] );
     title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
         'Red~X-axis   Green~Y-axis   Blue~Z-axis'});
     fprintf('The rotation angle around z1-axis is %.2f degree\n', rad2deg(angle_z1_axis) );

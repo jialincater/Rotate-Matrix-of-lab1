@@ -1,20 +1,20 @@
 function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
 
-
+    % Say ola to Rotation Matrixes~
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
     R12 = [1,0,0;0,cosd(zeta1),-sind(zeta1);0,sind(zeta1),cosd(zeta1)];
     R23 = [1,0,0;0,cosd(zeta2),-sind(zeta2);0,sind(zeta2),cosd(zeta2)];
     R34 = [1,0,0;0,cosd(zeta3),-sind(zeta3);0,sind(zeta3),cosd(zeta3)];
     R45 = [cosd(zeta4),0,sind(zeta4);0,1,0;-sind(zeta4),0,cosd(zeta4)];
     
-    %these are the cha of different frame
+    %these are the DIFF of different frame
     P01 = [0;0;0];
     P12 = [0;0;190];
     P23 = [0;200;0];
     P34 = [0;130;0];
     P45 = [0;0;0];
     
-    %Getting the second last point
+    %Getting the 4th point
     P5 = R45*[0;0;0]+P45;
     P4 = R34*P5+P34;
     P3 = R23*P4+P23;
@@ -35,43 +35,29 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
     P32S = R12*P33S+P12;
     P31S = R01*P32S+P01;
     
-    %getting the 4th point
-    %P44S = R34*[0;-330;0]+P34;
-    %P43S = R23*P44S+P23;
-    %P42S = R12*P43S+P12;
-    %P41S = R01*P42S+P01;
 
-    %   Now Start Plot P1P2
+    % This is the 1st & the 2nd Point, they never change
     PS1=[0,0,0];
     PS2=[0,0,190];
-    %PS3=R01*(R12*(R23*(R34*(R45*[0;200;190]+P45)+P34)+P23)+P12)+P01;
-    %PS4=R01*(R12*(R23*(R34*(R45*[0;330;190]+P45)+P34)+P23)+P12)+P01;
-    %PS5=R01*(R12*(R23*(R34*(R45*[0;460;190]+P45)+P34)+P23)+P12)+P01;
     
-    %   1st get the x1,y1,z1;x2,y2,z2
+    % then get the Coordinate of P1\P2\P3\P4\P5
     x1 = PS1(1); y1 = PS1(2); z1 = PS1(3); 
     x2 = PS2(1); y2 = PS2(2); z2 = PS2(3);
     x3 = P31S(1); y3 = P31S(2); z3 = P31S(3);
-    %x4 = P41S(1); y4 = P41S(2); z4 = P41S(3);
     x4 = P1(1); y4 = P1(2); z4 = P1(3);
     x5 = PL4(1); y5 = PL4(2); z5 = PL4(3);
     plot3([x1,x2],[y1,y2],[z1,z2],[x1,x2],[y1,y2],[z1,z2],'g.','markersize',50);
     grid on;
-    xlabel('X');ylabel('Y');zlabel('Z');
     axis equal;
     view(116,20);
     hold on;
     plot3([x2,x3],[y2,y3],[z2,z3],[x2,x3],[y2,y3],[z2,z3],'g.','markersize',50);
     plot3([x3,x4],[y3,y4],[z3,z4],[x3,x4],[y3,y4],[z3,z4],'g.','markersize',50);
     plot3([x4,x5],[y4,y5],[z4,z5],[x4,x5],[y4,y5],[z4,z5],'g.','markersize',50);
-    
-    %plot3([x4,x5],[y4,y5],[z4,z5]);
-    % hold off;
-    
-    %O = R45*R34*R23*R12*R01; 
+
     rotationMatrix = R01*R12*R23*R34*R45; 
     
-
+    % The following content is drifted by Clevery
     % version 2.0 
     % by A.C.Jr
     % Rotation Matrix To Euler Angles ZYZ
@@ -125,18 +111,14 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
 
     %Draw the figure
     quiver3(x5,y5,z5,r11,r21,r31,50,'r');
-    %hold on
     quiver3(x5,y5,z5,r12,r22,r32,50,'m');
     quiver3(x5,y5,z5,r13,r23,r33,50,'b');
     hold off
     xlabel('x-axis'); ylabel('y-axis'); zlabel('z-axis');
-    % axis( [-1,1,-1,1,-1,1] );
+
     title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
         'Red~X-axis   Pink~Y-axis   Blue~Z-axis'});
     fprintf('The rotation angle around z1-axis is %.2f degree\n', rad2deg(angle_z1_axis) );
     fprintf('The rotation angle around y1-axis is %.2f degree\n', rad2deg(angle_y1_axis) );
     fprintf('The rotation angle around z2-axis is %.2f degree\n', rad2deg(angle_z2_axis) );
-    end
-
-        %res = P1;
-
+end

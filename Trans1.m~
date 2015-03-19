@@ -62,7 +62,7 @@ function [ P31S,P1, O] = Trans1( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
     
     %O = R45*R34*R23*R12*R01; 
     O = R01*R12*R23*R34*R45; 
-    Euler_angle(O);
+    Euler_angle()
     %res = P1;
 end
 

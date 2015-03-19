@@ -1,4 +1,4 @@
-function [ P31S,P1, O] = Trans1( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
+function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
 
 
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
@@ -117,7 +117,7 @@ function [ P31S,P1, O] = Trans1( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
 
     %Draw the figure
     quiver3(0,0,0,r11,r21,r31,'r');
-    hold on
+    %hold on
     quiver3(0,0,0,r12,r22,r32,'g');
     quiver3(0,0,0,r13,r23,r33,'b');
     hold off
@@ -125,11 +125,10 @@ function [ P31S,P1, O] = Trans1( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
     axis( [-1,1,-1,1,-1,1] );
     title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
         'Red~X-axis   Green~Y-axis   Blue~Z-axis'});
-    fprintf('The rotation angle around z1-axis is %.2f 隆茫\n', rad2deg(angle_z1_axis) );
-    fprintf('The rotation angle around y1-axis is %.2f 隆茫\n', rad2deg(angle_y1_axis) );
-    fprintf('The rotation angle around z2-axis is %.2f 隆茫\n', rad2deg(angle_z2_axis) );
+    fprintf('The rotation angle around z1-axis is %.2f degree\n', rad2deg(angle_z1_axis) );
+    fprintf('The rotation angle around y1-axis is %.2f degree\n', rad2deg(angle_y1_axis) );
+    fprintf('The rotation angle around z2-axis is %.2f degree\n', rad2deg(angle_z2_axis) );
     end
 
         %res = P1;
-    end
 

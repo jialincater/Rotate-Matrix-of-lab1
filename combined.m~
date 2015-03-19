@@ -124,10 +124,10 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
     end
 
     %Draw the figure
-    quiver3(x5,,0,r11,r21,r31,'r');
+    quiver3(x5,y5,z5,r11,r21,r31,50,'r');
     %hold on
-    quiver3(0,0,0,r12,r22,r32,'g');
-    quiver3(0,0,0,r13,r23,r33,'b');
+    quiver3(x5,y5,z5,r12,r22,r32,50,'g');
+    quiver3(x5,y5,z5,r13,r23,r33,20,'b');
     hold off
     xlabel('x-axis'); ylabel('y-axis'); zlabel('z-axis');
     % axis( [-1,1,-1,1,-1,1] );

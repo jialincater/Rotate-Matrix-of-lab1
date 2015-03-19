@@ -55,15 +55,15 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
     %x4 = P41S(1); y4 = P41S(2); z4 = P41S(3);
     x4 = P1(1); y4 = P1(2); z4 = P1(3);
     x5 = PL4(1); y5 = PL4(2); z5 = PL4(3);
-    plot3([x1,x2],[y1,y2],[z1,z2],[x1,x2],[y1,y2],[z1,z2],'g.','markersize',75);
+    plot3([x1,x2],[y1,y2],[z1,z2],[x1,x2],[y1,y2],[z1,z2],'g.','markersize',50);
     grid on;
     xlabel('X');ylabel('Y');zlabel('Z');
     axis equal;
     view(116,20);
     hold on;
-    plot3([x2,x3],[y2,y3],[z2,z3],[x2,x3],[y2,y3],[z2,z3],'g.','markersize',75);
-    plot3([x3,x4],[y3,y4],[z3,z4],[x3,x4],[y3,y4],[z3,z4],'g.','markersize',75);
-    plot3([x4,x5],[y4,y5],[z4,z5],[x4,x5],[y4,y5],[z4,z5],'g.','markersize',75);
+    plot3([x2,x3],[y2,y3],[z2,z3],[x2,x3],[y2,y3],[z2,z3],'g.','markersize',50);
+    plot3([x3,x4],[y3,y4],[z3,z4],[x3,x4],[y3,y4],[z3,z4],'g.','markersize',50);
+    plot3([x4,x5],[y4,y5],[z4,z5],[x4,x5],[y4,y5],[z4,z5],'g.','markersize',50);
     
     %plot3([x4,x5],[y4,y5],[z4,z5]);
     % hold off;
@@ -124,15 +124,15 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
     end
 
     %Draw the figure
-    quiver3(x5,y5,z5,r11,r21,r31,'r');
+    quiver3(x5,y5,z5,r11,r21,r31,50,'r');
     %hold on
-    quiver3(x5,y5,z5,r12,r22,r32,'g');
-    quiver3(x5,y5,z5,r13,r23,r33,'b');
+    quiver3(x5,y5,z5,r12,r22,r32,50,'m');
+    quiver3(x5,y5,z5,r13,r23,r33,50,'b');
     hold off
     xlabel('x-axis'); ylabel('y-axis'); zlabel('z-axis');
     % axis( [-1,1,-1,1,-1,1] );
     title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
-        'Red~X-axis   Green~Y-axis   Blue~Z-axis'});
+        'Red~X-axis   Pink~Y-axis   Blue~Z-axis'});
     fprintf('The rotation angle around z1-axis is %.2f degree\n', rad2deg(angle_z1_axis) );
     fprintf('The rotation angle around y1-axis is %.2f degree\n', rad2deg(angle_y1_axis) );
     fprintf('The rotation angle around z2-axis is %.2f degree\n', rad2deg(angle_z2_axis) );

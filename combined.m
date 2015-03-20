@@ -71,12 +71,10 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
     r31=rotationMatrix(3,1);r32=rotationMatrix(3,2);r33=rotationMatrix(3,3);
 
     %Determine the rotation angle around y1-axis
-    if  r33 ~= 0 
-        angle_y1_axis =  atan2( sqrt(r13^2+r23^2) , r33 );
-    elseif  sqrt( r13^2+r23^2 ) ~= 0 
-       angle_y1_axis =  pi/2;
-    elseif  sqrt( r13^2+r23^2 ) == 0 
-        angle_y1_axis = 0;
+    if  sign( r33 ) ~= 0 
+        angle_y1_axis =  acos( r33 );
+    else 
+        angle_y1_axis = -acos( -r33 );
     end
 
     %Determine the rotation angle around z1-axis
@@ -88,7 +86,7 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
         end
     else 
         if sin(angle_y1_axis) == 0
-            angle_z1_axis = 0;
+            angle_z1_axis = ( acos( r11 )+ atan2(r21,r11))/2;
         else
             angle_z1_axis = asin( r23/sin(angle_y1_axis) );  
         end
@@ -103,7 +101,7 @@ function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4
         end
     else 
         if sin(angle_y1_axis) == 0
-            angle_z2_axis = 0;
+            angle_z2_axis = angle_z1_axis - atan2(r21,r11);
         else
             angle_z2_axis = asin( r32/sin(angle_y1_axis) );  
         end

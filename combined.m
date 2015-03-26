@@ -1,4 +1,4 @@
-function [ P31S,P1, rotationMatrix] = combined( P0,zeta0,zeta1,zeta2,zeta3,zeta4 )
+function [ P31S,P1, rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
 
     % Say ola to Rotation Matrixes~
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];

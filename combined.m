@@ -1,4 +1,4 @@
-function [ P31S,P1, rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
+function [ PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
 
     % Say ola to Rotation Matrixes~
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
@@ -119,4 +119,6 @@ function [ P31S,P1, rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
     fprintf('The rotation angle around z1-axis is %.2f degree\n', rad2deg(angle_z1_axis) );
     fprintf('The rotation angle around y1-axis is %.2f degree\n', rad2deg(angle_y1_axis) );
     fprintf('The rotation angle around z2-axis is %.2f degree\n', rad2deg(angle_z2_axis) );
+    
+
 end

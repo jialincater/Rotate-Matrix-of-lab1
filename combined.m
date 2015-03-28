@@ -2,7 +2,7 @@ function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
     % test if the angle is in range
     if zeta0<-80 || zeta0>80 
         error('zeta0 out of range');
-    elseif zeta1<-20 || zeta1>60
+    elseif zeta1<-40 || zeta1>60
         error('zeta1 out of range');
     elseif zeta2<-100 || zeta2 >0
         error('zeta2 out of range');

@@ -1,9 +1,9 @@
-function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
+function [PL4,rotationMatrix] = directKinematics()
     zeta0 = input('\nPlease enter the rotation angle around z1 axis:');
-    zeta1 = input('\nPlease enter the rotation angle around x1 axis:');
-    zeta0 = input('\nPlease enter the rotation angle around z1 axis:');
-    zeta0 = input('\nPlease enter the rotation angle around z1 axis:');
-    zeta0 = input('\nPlease enter the rotation angle around z1 axis:');
+    zeta1 = input('Please enter the rotation angle around x1 axis:');
+    zeta2 = input('Please enter the rotation angle around x2 axis:');
+    zeta3 = input('Please enter the rotation angle around x3 axis:');
+    zeta4 = input('Please enter the rotation angle around y1 axis:');
     % test if the angle is in range
     if zeta0<-80 || zeta0>80 
         error('zeta0 out of range');
@@ -17,11 +17,11 @@ function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
         error('zeta4 out of range');
     end
     
-    fprintf('zeta0 = %.2f бу\n', zeta0 );
-    fprintf('zeta1 = %.2f бу\n', zeta1 );
-    fprintf('zeta2 = %.2f бу\n', zeta2 );
-    fprintf('zeta3 = %.2f бу\n', zeta3 );
-    fprintf('zeta4 = %.2f бу\n', zeta4 );
+    %fprintf('zeta0 = %.2f бу\n', zeta0 );
+    %fprintf('zeta1 = %.2f бу\n', zeta1 );
+    %fprintf('zeta2 = %.2f бу\n', zeta2 );
+    %fprintf('zeta3 = %.2f бу\n', zeta3 );
+    %fprintf('zeta4 = %.2f бу\n', zeta4 );
 
     % Say ola to Rotation Matrixes~
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
@@ -139,9 +139,11 @@ function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
 
     title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
         'Red~X-axis   Pink~Y-axis   Blue~Z-axis'});
-    fprintf('The rotation angle around z1-axis is %.2f degree\n', angle_z1_axis );
-    fprintf('The rotation angle around y1-axis is %.2f degree\n', angle_y1_axis) ;
-    fprintf('The rotation angle around z2-axis is %.2f degree\n', angle_z2_axis );
+    fprintf('\n\nOrientation in Euler Angles ZYZ:\n');
+    fprintf('The rotation angle around z1-axis is %.2fбу\n', angle_z1_axis );
+    fprintf('The rotation angle around y1-axis is %.2fбу\n', angle_y1_axis) ;
+    fprintf('The rotation angle around z2-axis is %.2fбу\n', angle_z2_axis );
     
+    fprintf('\nThe coordinates of the end-effector in the base frame and the Matrix of the Orientation is:');
 
 end

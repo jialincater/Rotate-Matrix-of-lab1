@@ -67,12 +67,18 @@ function [ ] = inverseKinematics( P,A )
         zeta4 = 360 - zeta4;
     end
     
-    fprintf('Corresponding solutions in the angles space:\n');
-    fprintf('Firstly, the rotation angle along the axis z1, zeta0 = %.2fбу\n', zeta0 );
-    fprintf('Then, the rotation angle along the axis x1, zeta1 = %.2fбу\n', zeta1 );
-    fprintf('Next, the rotation angle along the axis x2, zeta2 = %.2fбу\n', zeta2 );
-    fprintf('After that, the rotation angle along the axis x3, zeta3 = %.2fбу\n', zeta3 );
-    fprintf('Finally, the rotation angle along the axis y1, zeta4 = %.2fбу\n', zeta4 );    
+    fprintf('\nCorresponding solutions in the angles space:\n');
+    fprintf('Firstly, the rotation angle along the axis z1, zeta0 = %.2f бу\n', zeta0 );
+    fprintf('Then, the rotation angle along the axis x1, zeta1 = %.2f бу\n', zeta1 );
+    fprintf('Firstly, the rotation angle along the axis z1, zeta0 = %.2f бу\n', zeta2 );
+    fprintf('Firstly, the rotation angle along the axis z1, zeta0 = %.2f бу\n', zeta3 );
+    fprintf('Firstly, the rotation angle along the axis z1, zeta0 = %.2f бу\n', zeta4 );
+    fprintf('zeta1 = %.2f бу\n', zeta1 );
+    fprintf('zeta2 = %.2f бу\n', zeta2 );
+    fprintf('zeta3 = %.2f бу\n', zeta3 );
+    fprintf('zeta4 = %.2f бу\n', zeta4 );
+
+    
 
 end
 

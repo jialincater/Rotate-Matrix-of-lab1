@@ -1,9 +1,5 @@
-function [PL4,rotationMatrix] = combined()
-    zeta0 = input('\nPlease enter the rotation angle around z1 axis:');
-    zeta1 = input('Please enter the rotation angle around x1 axis:');
-    zeta2 = input('Please enter the rotation angle around x2 axis:');
-    zeta3 = input('Please enter the rotation angle around x3 axis:');
-    zeta4 = input('Please enter the rotation angle around y1 axis:');
+function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4)
+
     % test if the angle is in range
     if zeta0<-80 || zeta0>80 
         error('zeta0 out of range');
@@ -16,12 +12,6 @@ function [PL4,rotationMatrix] = combined()
     elseif zeta4<0 || zeta4>200
         error('zeta4 out of range');
     end
-    
-    %fprintf('zeta0 = %.2f бу\n', zeta0 );
-    %fprintf('zeta1 = %.2f бу\n', zeta1 );
-    %fprintf('zeta2 = %.2f бу\n', zeta2 );
-    %fprintf('zeta3 = %.2f бу\n', zeta3 );
-    %fprintf('zeta4 = %.2f бу\n', zeta4 );
 
     % Say ola to Rotation Matrixes~
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
@@ -93,43 +83,6 @@ function [PL4,rotationMatrix] = combined()
     r21=rotationMatrix(2,1);r22=rotationMatrix(2,2);r23=rotationMatrix(2,3);
     r31=rotationMatrix(3,1);r32=rotationMatrix(3,2);r33=rotationMatrix(3,3);
 
-    %Determine the rotation angle around y1-axis
-    if  sign( r33 ) ~= 0 
-        angle_y1_axis =  acosd( r33 );
-    else 
-        angle_y1_axis = -acosd( -r33 );
-    end
-
-    %Determine the rotation angle around z1-axis
-    if  r13 ~= 0 
-        if r23 ~= 0
-            angle_z1_axis = atan2d( r23,r13 );
-        else
-            angle_z1_axis = asind( r23/sin(angle_y1_axis) );
-        end
-    else 
-        if sin(angle_y1_axis) == 0
-            angle_z1_axis = ( acosd( r11 )+ atan2d(r21,r11))/2;
-        else
-            angle_z1_axis = asind( r23/sin(angle_y1_axis) );  
-        end
-    end
-
-    %Determine the rotation angle around z2-axis
-    if  r31 ~= 0 
-        if r32 ~= 0
-            angle_z2_axis = atan2d( r32,-r31 );
-        else
-            angle_z2_axis = asind( r32/sin(angle_y1_axis) );
-        end
-    else 
-        if sin(angle_y1_axis) == 0
-            angle_z2_axis = angle_z1_axis - atan2d(r21,r11);
-        else
-            angle_z2_axis = asind( r32/sin(angle_y1_axis) );  
-        end
-    end
-
     %Draw the figure
     quiver3(x5,y5,z5,r11,r21,r31,50,'r');
     quiver3(x5,y5,z5,r12,r22,r32,50,'m');
@@ -139,11 +92,4 @@ function [PL4,rotationMatrix] = combined()
 
     title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
         'Red~X-axis   Pink~Y-axis   Blue~Z-axis'});
-    fprintf('\n\nOrientation in Euler Angles ZYZ:\n');
-    fprintf('The rotation angle around z1-axis is %.2fбу\n', angle_z1_axis );
-    fprintf('The rotation angle around y1-axis is %.2fбу\n', angle_y1_axis) ;
-    fprintf('The rotation angle around z2-axis is %.2fбу\n', angle_z2_axis );
-    
-    fprintf('\nThe coordinates of the end-effector in the base frame and the Matrix of the Orientation is:');
-
 end

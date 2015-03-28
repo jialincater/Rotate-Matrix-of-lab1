@@ -6,12 +6,7 @@ function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
         error('zeta1 out of range');
     elseif zeta2<-100 || zeta2 >0
         error('zeta2 out of range');
-    elseif zeta3>100 || zeta3<-100
-        error('zeta3 out of range');
-    elseif zeta4<-100 || zeta4>100
-        error('zeta4 out of range');
-    end
-    
+    elseif zeta3>100 || 
     % Say ola to Rotation Matrixes~
     R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
     R12 = [1,0,0;0,cosd(zeta1),-sind(zeta1);0,sind(zeta1),cosd(zeta1)];

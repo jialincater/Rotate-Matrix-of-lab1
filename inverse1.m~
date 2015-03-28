@@ -44,11 +44,7 @@ function [ P2,zeta0,zeta1,zeta2,zeta3 ] = inverse1( A, P )
     zeta3 = acosd((sum(LP2P3.*Vector))/(norm(LP2P3)*norm(Vector)));
     
     
-    % make sure zeta3 is correct
-    nP = combined(zeta0,zeta1,zeta2,zeta3,0);
-    if nP(1)-P(1)>0.0001
-        zeta3 = -zeta3;
-    end
+    % ma
     %{
     % make sure the angles are reasonable
     if L12+L23 < L13

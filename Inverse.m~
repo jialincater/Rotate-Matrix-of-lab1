@@ -27,7 +27,7 @@ Theta2=acos((x1^2+y1^2-lArm1^2-lArm2^2)/(2*lArm1*lArm2));
 
 Beta=atan2(y1,x1);
 Phi=acos((x1^2+y1^2+lArm1^2-lArm2^2)/(2*lArm1*sqrt(x1^2+y1^2)));
-Theta1=Beta+Phi;
+Theta1=Beta-Phi;
 fprintf('The rotation angle along the axis x1 in the first frame,Theta1 is %.2f бу\n', rad2deg(Theta1));
 fprintf('The rotation angle along the axis x2 in the first frame,Theta2 is %.2f бу\n', rad2deg(Theta2));
 

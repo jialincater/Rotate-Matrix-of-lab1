@@ -8,7 +8,7 @@ function [PL4,rotationMatrix] = combined(zeta0,zeta1,zeta2,zeta3,zeta4 )
         error('zeta2 out of range');
     elseif zeta3>100 || zeta3<-100
         error('zeta3 out of range');
-    elseif zeta4<-100 || zeta4>100
+    elseif zeta4<0 || zeta4>200
         error('zeta4 out of range');
     end
     

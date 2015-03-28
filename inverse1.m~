@@ -1,4 +1,4 @@
-function [ P2,zeta0,zeta1,zeta2,zeta3 ] = inverse1( A, P )
+function [ ] = inverse1( A, P )
     % We know that A is the orientation matrix of the total operation
     % and P is the position of the end-effort point
     
@@ -44,7 +44,35 @@ function [ P2,zeta0,zeta1,zeta2,zeta3 ] = inverse1( A, P )
     zeta3 = acosd((sum(LP2P3.*Vector))/(norm(LP2P3)*norm(Vector)));
     
     
-    % ma
+    % make sure zeta3 is correct
+    nP = combined(zeta0,zeta1,zeta2,zeta3,0);
+    if nP(1)-P(1)>0.0001
+        zeta3 = -zeta3;
+    end
+    
+    % Say ola again to Rotation Matrixes~
+    zeta4=0;
+    R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
+    R12 = [1,0,0;0,cosd(zeta1),-sind(zeta1);0,sind(zeta1),cosd(zeta1)];
+    R23 = [1,0,0;0,cosd(zeta2),-sind(zeta2);0,sind(zeta2),cosd(zeta2)];
+    R34 = [1,0,0;0,cosd(zeta3),-sind(zeta3);0,sind(zeta3),cosd(zeta3)];
+    R45 = [cosd(zeta4),0,sind(zeta4);0,1,0;-sind(zeta4),0,cosd(zeta4)];
+    nA = R01*R12*R23*R34*R45;
+    V1 = [nA(1,1);nA(2,1);nA(3,1)];
+    V2 = [A(1,1);A(2,1);A(3,1)];
+    zeta4 = acosd((sum(V1.*V2))/(norm(V1)*norm(V2)));
+    nA = R01*R12*R23*R34*R45;
+    if nA(2,1)-A(2,1)> 0.00001
+        zeta4 = 360 - zeta4;
+    end
+    fprintf('zeta0 = %.2f бу\n', zeta0 );
+    fprintf('zeta1 = %.2f бу\n', zeta1 );
+    fprintf('zeta2 = %.2f бу\n', zeta2 );
+    fprintf('zeta3 = %.2f бу\n', zeta3 );
+    fprintf('zeta4 = %.2f бу\n', zeta4 );
+
+    
+    
     %{
     % make sure the angles are reasonable
     if L12+L23 < L13

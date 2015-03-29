@@ -1,7 +1,8 @@
-function [n1,n2,n3] = auxiliaryFunction2( x,y,z )%input the X,Y and Z coordinates of the final point in the base frame,
+function [n1,n2,n3] = auxiliaryFunction2( x,y,z )
+%Inverse problem for the Lab1
+%Input the X,Y and Z coordinates of the final point in the base frame,
 %and you will get the rotation angle along with each of  the axises
 
-%Inverse problem for the Lab1
 %Inver kinematics - Geometric method
 
 %The inverse problem in the XOY plane
@@ -32,4 +33,3 @@ n1 = rad2deg(Theta0);
 n2 = rad2deg(Theta1);
 n3 = rad2deg(Theta2);
 end
-

@@ -2,10 +2,10 @@ function [PL4,rotationMatrix] = directKinematics()
 
 %Input the rotation angle aroung each axis within the plausible range
 zeta0 = input('Please input the rotation angle around z1 axis\nthat should be in range of (-80,80):');
-zeta1 = input('\nPlease input the rotation angle around x1 axis\nthat should be in range of (-40,60):');
-zeta2 = input('\nPlease input the rotation angle around x2 axis\nthat should be in range of (-100,0):');
-zeta3 = input('\nPlease input the rotation angle around x3 axis\nthat should be in range of (-100,100):');
-zeta4 = input('\nPlease input the rotation angle around y1 axis\nthat should be in range of (0,200):');
+zeta1 = input('Please input the rotation angle around x1 axis\nthat should be in range of (-40,60):');
+zeta2 = input('Please input the rotation angle around x2 axis\nthat should be in range of (-100,0):');
+zeta3 = input('Please input the rotation angle around x3 axis\nthat should be in range of (-40,60):');
+zeta4 = input('Please input the rotation angle around y1 axis\nthat should be in range of (-40,60):');
     
 %Test if the angles are in range, ensure it works practically
 if zeta0<-80 || zeta0>80 

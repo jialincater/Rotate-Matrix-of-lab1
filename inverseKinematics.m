@@ -33,7 +33,6 @@ P32S = R12*P33S+P12;
 P2 = R01*P32S+P01;
 
 % Solution to determine Theta3
-P1 = [0; 0; 190];
 LP2P3 = P3-P2;
 Theta3 = acosd((sum(LP2P3.*Vector))/(norm(LP2P3)*norm(Vector)));
 

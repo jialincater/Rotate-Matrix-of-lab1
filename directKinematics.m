@@ -53,25 +53,6 @@ P33S = R23*[0;0;0]+P23;
 P32S = R12*P33S+P12;
 P31S = R01*P32S+P01;
 
-%PS1=[0,0,0];
-
-%PS2=[0,0,190];
-    
-% Draw the figure with five points on the Figure window
-% x1 = PS1(1); y1 = PS1(2); z1 = PS1(3); 
-% x2 = PS2(1); y2 = PS2(2); z2 = PS2(3);
-% x3 = P31S(1); y3 = P31S(2); z3 = P31S(3);
-% x4 = P1(1); y4 = P1(2); z4 = P1(3);
-% x5 = PL4(1); y5 = PL4(2); z5 = PL4(3);
-% plot3([x1,x2],[y1,y2],[z1,z2],[x1,x2],[y1,y2],[z1,z2],'g.','markersize',50);
-% grid on;
-% axis equal;
-% view(116,20);
-% hold on;
-% plot3([x2,x3],[y2,y3],[z2,z3],[x2,x3],[y2,y3],[z2,z3],'g.','markersize',50);
-% plot3([x3,x4],[y3,y4],[z3,z4],[x3,x4],[y3,y4],[z3,z4],'g.','markersize',50);
-% plot3([x4,x5],[y4,y5],[z4,z5],[x4,x5],[y4,y5],[z4,z5],'g.','markersize',50);
-
 %The combined Rotation Matrix 
 rotationMatrix = R01*R12*R23*R34*R45; 
     
@@ -130,21 +111,13 @@ end
 if angle_z2_axis>=0
     angle_z2_axis=abs(angle_z2_axis);
 end
-%Draw the figure
-% quiver3(x5,y5,z5,r11,r21,r31,50,'r');
-% quiver3(x5,y5,z5,r12,r22,r32,50,'m');
-% quiver3(x5,y5,z5,r13,r23,r33,50,'b');
-% hold off
-% xlabel('x-axis'); ylabel('y-axis'); zlabel('z-axis');
-% 
-% title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
-%         'Red~X-axis   Pink~Y-axis   Blue~Z-axis'});
+
 fprintf('\n\nOrientation in Euler Angles ZYZ:\n');
 fprintf('The rotation angle around z1-axis is %.2f¡ã\n', angle_z1_axis );
 fprintf('The rotation angle around y1-axis is %.2f¡ã\n', angle_y1_axis) ;
 fprintf('The rotation angle around z2-axis is %.2f¡ã\n', angle_z2_axis );
     
 fprintf('\nThe coordinates of the end-effector in the base frame and the Matrix of the Orientation is:');
-
+% draw the figure
 draw(P31S,P1,PL4,rotationMatrix);
 end

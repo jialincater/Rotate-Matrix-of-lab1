@@ -44,7 +44,8 @@ if nP(1)-P(1)>0.01 || nP(2)-P(2)>0.01 || nP(3)-P(3)>0.01
     Theta3 = -Theta3;
 end
 close all;
-auxiliaryFunction1(Theta0,Theta1,Theta2,Theta3,0);
+%auxiliaryFunction1(Theta0,Theta1,Theta2,Theta3,0);
+draw(P2,P3,P,A);
 %determine P3 from the P4 and the final orientation
 Theta4=0;
 R01 = [cosd(Theta0),-sind(Theta0),0;sind(Theta0),cosd(Theta0),0;0,0,1];

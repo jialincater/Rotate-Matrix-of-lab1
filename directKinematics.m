@@ -1,31 +1,31 @@
 function [PL4,rotationMatrix] = directKinematics()
 
 %Input the rotation angle aroung each axis within the plausible range
-zeta0 = input('Please input the rotation angle around z1 axis\nthat should be in range of (-80,80):');
-zeta1 = input('\nPlease input the rotation angle around x1 axis\nthat should be in range of (-40,60):');
-zeta2 = input('\nPlease input the rotation angle around x2 axis\nthat should be in range of (-100,0):');
-zeta3 = input('\nPlease input the rotation angle around x3 axis\nthat should be in range of (-100,100):');
-zeta4 = input('\nPlease input the rotation angle around y1 axis\nthat should be in range of (0,200):');
+Theta0 = input('Please input the rotation angle around z1 axis\nthat should be in range of (-80,80):');
+Theta1 = input('\nPlease input the rotation angle around x1 axis\nthat should be in range of (-40,60):');
+Theta2 = input('\nPlease input the rotation angle around x2 axis\nthat should be in range of (-100,0):');
+Theta3 = input('\nPlease input the rotation angle around x3 axis\nthat should be in range of (-100,100):');
+Theta4 = input('\nPlease input the rotation angle around y1 axis\nthat should be in range of (0,200):');
     
 %Test if the angles are in range, ensure it works practically
-if zeta0<-80 || zeta0>80 
-        error('zeta0 out of range');
-elseif zeta1<-40 || zeta1>60
-        error('zeta1 out of range');
-elseif zeta2<-100 || zeta2 >0
-        error('zeta2 out of range');
-elseif zeta3>100 || zeta3<-100
-        error('zeta3 out of range');
-elseif zeta4<0 || zeta4>200
-        error('zeta4 out of range');
+if Theta0<-80 || Theta0>80 
+        error('Theta0 out of range');
+elseif Theta1<-40 || Theta1>60
+        error('Theta1 out of range');
+elseif Theta2<-100 || Theta2 >0
+        error('Theta2 out of range');
+elseif Theta3>100 || Theta3<-100
+        error('Theta3 out of range');
+elseif Theta4<0 || Theta4>200
+        error('Theta4 out of range');
 end
 
 %Rotation Matrix between the neighbor point
-R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
-R12 = [1,0,0;0,cosd(zeta1),-sind(zeta1);0,sind(zeta1),cosd(zeta1)];
-R23 = [1,0,0;0,cosd(zeta2),-sind(zeta2);0,sind(zeta2),cosd(zeta2)];
-R34 = [1,0,0;0,cosd(zeta3),-sind(zeta3);0,sind(zeta3),cosd(zeta3)];
-R45 = [cosd(zeta4),0,sind(zeta4);0,1,0;-sind(zeta4),0,cosd(zeta4)];
+R01 = [cosd(Theta0),-sind(Theta0),0;sind(Theta0),cosd(Theta0),0;0,0,1];
+R12 = [1,0,0;0,cosd(Theta1),-sind(Theta1);0,sind(Theta1),cosd(Theta1)];
+R23 = [1,0,0;0,cosd(Theta2),-sind(Theta2);0,sind(Theta2),cosd(Theta2)];
+R34 = [1,0,0;0,cosd(Theta3),-sind(Theta3);0,sind(Theta3),cosd(Theta3)];
+R45 = [cosd(Theta4),0,sind(Theta4);0,1,0;-sind(Theta4),0,cosd(Theta4)];
     
 %Original offset between neighbor point 
 P01 = [0;0;0];

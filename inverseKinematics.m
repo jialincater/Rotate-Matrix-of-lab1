@@ -40,10 +40,11 @@ zeta3 = acosd((sum(LP2P3.*Vector))/(norm(LP2P3)*norm(Vector)));
 
 %Auxiliary correction for the accuracy problem in Matlab
 nP = auxiliaryFunction1(zeta0,zeta1,zeta2,zeta3,0);
-if nP(1)-P(1)>0.01
+if nP(1)-P(1)>0.01 || nP(2)-P(2)>0.01 || nP(3)-P(3)>0.01
     zeta3 = -zeta3;
 end
-
+close all;
+auxiliaryFunction1(zeta0,zeta1,zeta2,zeta3,0);
 %determine P3 from the P4 and the final orientation
 zeta4=0;
 R01 = [cosd(zeta0),-sind(zeta0),0;sind(zeta0),cosd(zeta0),0;0,0,1];
@@ -61,7 +62,7 @@ if nA(2,1)-A(2,1)>0.01
     zeta4 = 360 - zeta4;
 end
 
-fprintf('Corresponding solutions in the angles space:\n');
+fprintf('Corresponding solutions in the angles space:\n\n');
 fprintf('Firstly, the rotation angle along the axis z1, zeta0 = %.2f¡ã\n', zeta0 );
 fprintf('Then, the rotation angle along the axis x1, zeta1 = %.2f¡ã\n', zeta1 );
 fprintf('Next, the rotation angle along the axis x2, zeta2 = %.2f¡ã\n', zeta2 );

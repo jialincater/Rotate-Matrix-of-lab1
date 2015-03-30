@@ -121,7 +121,15 @@ else
         angle_z2_axis = asind( r32/sin(angle_y1_axis) );  
     end
 end
-
+if angle_z1_axis>=0
+    angle_z1_axis=abs(angle_z1_axis);
+end
+if angle_y1_axis>=0
+    angle_y1_axis=abs(angle_y1_axis);
+end
+if angle_z2_axis>=0
+    angle_z2_axis=abs(angle_z2_axis);
+end
 %Draw the figure
 quiver3(x5,y5,z5,r11,r21,r31,50,'r');
 quiver3(x5,y5,z5,r12,r22,r32,50,'m');

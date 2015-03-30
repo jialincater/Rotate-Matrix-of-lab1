@@ -111,11 +111,11 @@ xlabel('x-axis'); ylabel('y-axis'); zlabel('z-axis');
 
 title({'Determination of Euler Angles ZYZ by a given Rotation Matrix' ; 'Color of the Vector~Axis of the Orientation' ; 
         'Red~X-axis   Pink~Y-axis   Blue~Z-axis'});
-fprintf('\n\nOrientation in Euler Angles ZYZ:\n');
-fprintf('The rotation angle around z1-axis is %.2f¡ã\n', angle_z1_axis );
-fprintf('The rotation angle around y1-axis is %.2f¡ã\n', angle_y1_axis) ;
-fprintf('The rotation angle around z2-axis is %.2f¡ã\n', angle_z2_axis );
+%fprintf('\n\nOrientation in Euler Angles ZYZ:\n');
+%fprintf('The rotation angle around z1-axis is %.2f¡ã\n', angle_z1_axis );
+%fprintf('The rotation angle around y1-axis is %.2f¡ã\n', angle_y1_axis) ;
+%fprintf('The rotation angle around z2-axis is %.2f¡ã\n', angle_z2_axis );
     
-fprintf('\nThe coordinates of the end-effector in the base frame and the Matrix of the Orientation is:');
+% fprintf('\nThe coordinates of the end-effector in the base frame and the Matrix of the Orientation is:');
 
 end

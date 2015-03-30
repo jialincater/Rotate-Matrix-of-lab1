@@ -32,4 +32,8 @@ Theta1=Beta+Phi;
 n1 = rad2deg(Theta0);
 n2 = rad2deg(Theta1);
 n3 = rad2deg(Theta2);
+
+if n1>=0
+    n1=abs(n1);
+end
 end

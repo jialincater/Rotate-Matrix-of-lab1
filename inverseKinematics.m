@@ -45,7 +45,7 @@ end
 close all;
 %auxiliaryFunction1(Theta0,Theta1,Theta2,Theta3,0);
 draw(P2,P3,P,A);
-%determine P3 from the P4 and the final orientation
+%determine Theta4 from the final orientation
 Theta4=0;
 R01 = [cosd(Theta0),-sind(Theta0),0;sind(Theta0),cosd(Theta0),0;0,0,1];
 R12 = [1,0,0;0,cosd(Theta1),-sind(Theta1);0,sind(Theta1),cosd(Theta1)];
